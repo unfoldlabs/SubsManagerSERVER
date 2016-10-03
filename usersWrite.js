@@ -55,7 +55,7 @@ var subscription_name= req.query.subscription_name;
 var subscription_url= req.query.subscription_url;
 var deleteBool = req.query.deleteBool;
 
-	var queryString = 'Insert into UserSubscription(FullName, Length, Subscription_Plan, Price, PhoneNumber, StartDate, EndDate, Top_Subscription, IconUrl, CreditCards, ID, Subscription_Name, Subscription_Url, deleteBool) values("'+name+'","'+length+'","'+plan+'","'+price+'","'+phonenumber+'","'+startdate+'","'+enddate+'","'+topsubscribe+'","'+iconur+'","'+creditcards+'","'+id+'","'+subscription_name+'","'+subscription_url+'","'+deleteBool+'")';
+	var queryString = 'Insert into UserSubscription(FullName, Length, Subscription_Plan, Price, PhoneNumber, StartDate, EndDate, Top_Subscription, IconUrl, CreditCards, ID, Subscription_Name, Subscription_Url, deleteBool) values("'+name+'","'+length+'","'+plan+'","'+price+'","'+phonenumber+'","'+startdate+'","'+enddate+'","'+topsubscribe+'","'+iconurl+'","'+creditcards+'","'+id+'","'+subscription_name+'","'+subscription_url+'","'+deleteBool+'")';
 connection.query(queryString, function(err, rows, fields) {
     if (err){
     	throw err;
