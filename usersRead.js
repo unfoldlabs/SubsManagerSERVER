@@ -4,7 +4,6 @@ var express = require('express');
 var app = express();
 var mysql = require('mysql');
 var router = express.Router();
-
 var arrayList=[];
 function Databaseobj(ID, name ,length,plan,price,phonenumber, startdate,enddate,topsubscribe,iconurl, creditcards,Subscription_Name, Subscription_Url,deleteBool){
 	
@@ -29,8 +28,7 @@ var connection = mysql.createConnection({
 	host:'localhost',
 	user:'root',
 	//password:'root',
-	database:'db'
-		
+	database:'db'	
 });
 
 connection.connect(function(err){
@@ -38,11 +36,9 @@ connection.connect(function(err){
 		console.error(err);
 		console.log('error');
 	}
-	
 	else{
 		console.log('connected');
 	}
-	
 });
 var queryString_Initial = 'Use db;';
 connection.query(queryString_Initial, function(err, rows, fields){
@@ -79,20 +75,15 @@ connection.query(queryString, function(err, rows, fields) {
     	var subscription_name= rows[i].Subscription_Name;
     	var subscription_url= rows[i].Subscription_Url;
     	var deleteBool = rows[i].deleteBool;
-    	
-
-       var obj = new Databaseobj(id, name, length,plan,price,phonenumber,startdate,enddate, topsubscribe,iconurl,creditcards,subscription_name,subscription_url,deleteBool);
+       	var obj = new Databaseobj(id, name, length,plan,price,phonenumber,startdate,enddate, topsubscribe,iconurl,creditcards,subscription_name,subscription_url,deleteBool);
        arrayList.push(obj);   
     }
 });
-
 	app.use('/', router);
 	router.get('/usersRead', function(req, res) {
-
 		res.type('text/plain');
 		res.send(JSON.stringify(arrayList,null,'\t')); 
-		console.log(res.status);
-		
+		console.log(res.status);	
 	});
 
 module.exports = router;
